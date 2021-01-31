@@ -48,7 +48,7 @@ El servicio está orientado a trabajar bajo la arquitectura de miscroservicios, 
 │           ├── com.valid.clients.controller
 |           ├── com.valid.clients.dto
 │           ├── com.valid.clients.exception
-│           ├── com.valid.clients.messages
+│           ├── com.valid.clients.error
 │           ├── com.valid.clients.model
 │           ├── com.valid.clients.repository
 │           └── com.valid.clients.service
