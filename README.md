@@ -1,6 +1,10 @@
 # Valid  valid-service
 Servicio para administrar clientes  y procesarlos.
 
+
+## Documentación:
+Además se está documentación  el servicio posee una documentación usando swagger que permite visualizar cada uno se los endpoints que expone el servicio, para ello es necesario correr el servicio en local  y pegar la url en el navegador de su preferencia:
+	* http://localhost:8080/swagger-ui.html
 ## Construido con:
 
 * 	[Maven] - Administracion de dependencias
