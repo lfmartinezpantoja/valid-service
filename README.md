@@ -1,0 +1,85 @@
+# Valid  valid-service
+Servicio para administrar clientes  y procesarlos.
+
+## Construido con:
+
+* 	[Maven] - Administracion de dependencias
+* 	[JDK] - Java™ Platform, Standard  Development Kit
+Spring Applications
+* 	[Lombok](https://projectlombok.org/) - Para generar automatocamente metodos getter, setter y construtores para  	entidades y DTOs.
+
+
+
+## Herramientas de prueba:
+*   Pruebas de integracion con JUnit y MockMvc en el directorio: src/test/java en el package: controller.
+* 	[Postman](https://www.getpostman.com/) - API Development Environment (La colleccion se postman se encuentra en la carpeta fuente resources del proyecto (src/main/resources))
+
+
+
+## Correr el proyecto localmente:
+Hay varias maneres de correr el proyecto en local. Una de las maneras es ejecutar el metodo `main`  en la clase `com.valid.clients.ValidServiceApplication` desde el IDE de su preferencia.
+
+Para correr el proyecto se procede a realizar los siguientes pasos:
+* 	Descargar el repositorio de GitHub o clonarlo.
+* 	Open Eclipse o el IDE de su preferencia.
+	* File -> Import -> Existing Maven Project -> Navigate to the folder.
+	* Select the project
+* 	Escoger la clase Spring Boot Application (Buscar por  @SpringBootApplication)
+* 	click derecho en la clase y  Run as Java Application.
+
+Alternativamente usted puede usar el Spring boot Maven plugin, ejecutando:
+
+```shell
+mvn spring-boot:run
+```
+
+## Arquitectura, patroneres de diseño y directorios
+
+El servicio está orientado a trabajar bajo la arquitectura de miscroservicios, es decir la única funcionalidad que debería exponer este debería ser la administración de clientes, además debido a que el requerimiento actual está acotado a unas determinadas funciones el servicio de encuentra abierto para extensión (pricipio open-close), el servicio presenta una arquitectura interna por capas bien definida y tiene la estrcuctura de paquetes que se muestra a continuación:
+
+```text
+.
+├── Spring Elements
+├── src
+│   └── main
+│       └── java
+│           ├── com.valid.clients
+│           ├── com.valid.clients.config
+│           ├── com.valid.clients.controller
+|           ├── com.valid.clients.dto
+│           ├── com.valid.clients.exception
+│           ├── com.valid.clients.messages
+│           ├── com.valid.clients.model
+│           ├── com.valid.clients.repository
+│           └── com.valid.clients.service
+│           └── com.valid.clients.service.imp
+├── src
+│   └── main
+│       └── resources
+│           ├── application.properties
+├── src
+│   └── test
+│       └── java
+|           ├── com.valid.clients.controller
+├── JRE System Library
+├── Maven Dependencies
+├── bin
+├── src
+├── target
+│   └──valid-service:0.0.1-SNAPSHOT
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+└── README.md
+```
+
+Cada paquete tiene asociada unas clases que tiene una funcionalida bien definida, lo cual cumple con el princio de única resposabilidad (única razón para cambiar), en seguida se describe la funcionalidad o patrón de diseño de cada uno de los paquetes o clases asociadas
+## packages
+
+* 	`models` — Es donde se encuentran las entidades de domino, en esta caso tienen las anotaciones que permiten mapear la 	   tabla asociada en base de datos, con lo cual nos permite usar JPA como DAO para la capa de persitencia;
+* 	`repositories` — Implementan el patron DAO, es decir la capa de acceso a datos, para este caso se usa JPA como ORM;
+* 	`services y su implementacion` — Se encuentran las clases que implementan la lógica de la aplicacion, también tienen 	  una interface que implementa el patrón Fachada (Facade) con lo cual no se depende de implementaciones si no de  			 abstracciones;
+* 	`controllers` — Es la capa REST del nuestro servicio y nos permite recibir las peticiones HTTP y  transferir 	  las 	   información recibida desde la capa REST a la capa de servicio donde se procesa la información;
+*    `dtos` - Sus clases implementan el patrón DTO, el cual representa un objeto plano cuya finalidad es ser usado en la 	   capa de presentación y transefir la información a la capa de servicio;
+*    `config` - contiene clases de configuración del proyecto, para este caso algunos beans utilitarios.
+* 	`pom.xml` - Contiene todas las dependencias del proyecto
