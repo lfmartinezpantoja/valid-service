@@ -16,7 +16,7 @@ Spring Applications
 
 ## Herramientas de prueba:
 *   Pruebas de integracion con JUnit y MockMvc en el directorio: src/test/java en el package: controller, clase: ClientControllerIntegrationTest.class, el cual contiene pruebas de integración para creación de cliente, obtener todos los clientes, procesar clientes de manera exitoso y procesar un cliente fallido para provocar una excepción controlada, estas pueden ser ejecutadas de la siguiente forma: Click derecho en la clase -> Run as -> Junit Test.
-* 	[Postman](https://www.getpostman.com/) - API Development Environment (La colleccion se postman se encuentra en la carpeta fuente resources del proyecto (src/main/resources))
+* 	[Postman](https://www.getpostman.com/) - API Development Environment (La colleccion de postman se encuentra en la carpeta fuente resources del proyecto (src/main/resources)), colleccion: VALID.postman_collection.
 
 
 
@@ -37,7 +37,7 @@ Alternativamente usted puede usar el Spring boot Maven plugin, ejecutando:
 mvn spring-boot:run
 ```
 
-## Arquitectura, patroneres de diseño y directorios
+## Arquitectura, patrones de diseño y paquetes
 
 El servicio está orientado a trabajar bajo la arquitectura de miscroservicios, es decir la única funcionalidad que debería exponer este debería ser la administración de clientes, además debido a que el requerimiento actual está acotado a unas determinadas funciones el servicio de encuentra abierto para extensión (pricipio open-close), el servicio presenta una arquitectura interna por capas bien definida y tiene la estrcuctura de paquetes que se muestra a continuación:
 
